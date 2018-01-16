@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    
+    <f:view contentType="text/html; encoding=UTF-8" >  
+        <parameter-encoding default-charset="UTF-8"/>
+        
+        <h:head >
+            <title>Projeto NUPASD</title>
+            <link type="text/css" rel="stylesheet" href="css/estilo.css" media="screen"/>
+           
+        </h:head>
+        <h:body style="background-color: #e0e0d1">
+            
+            
+            <h:form style="background-color: #e0e0d1">
+                <p:panelGrid columns="1" id="panelPrincipal" style="margin-left:150px; width: 75%; position: relative" >
+                    <h1 style="font: 30px arial, sans-serif; margin-left:80px; color: #000000">PROJETO NUPASD </h1> 
+            
+                    <hr/> <hr/>
+                    
+                    <h:outputLabel value="Insira abaixo o texto que deseja verificar, ou selecione um arquivo do seu computador." style="color: #000000; font: 17px arial, sans-serif;margin-left:80px;"></h:outputLabel>
+                    <p:inputTextarea placeholder="Insira seu texto aqui." style="width:80%; position: relative; margin-left:80px; border-width: 2px !important" id="txt_insira" value="#{principal.txt1}" required="true" requiredMessage="Por favor, insira um texto."> 
+                    </p:inputTextarea>
+                    <h:outputText></h:outputText>
+                    
+                    <h:form enctype="multipart/form-data">
+                        <p:fileUpload value="#{principal.file}" fileUploadListener="#{principal.upload}" style="margin-left:80px; width:45%; font: 17px arial, sans-serif;" allowTypes="/(\.|\/)(doc|docx|pdf|txt)$/" invalidFileMessage="São permitidos somente arquivos de texto (doc, docx, pdf, txt)" multiple="false" label="Selecionar arquivo..." auto="true" />
+                    </h:form>        
+                    <p:messages  severity="info" escape="false" showDetail="true" autoUpdate="true"  closable="true"/>
+           
+                    
+                    <p:panelGrid columns="2" style="margin-left:70px; ">
+                    <h:outputLabel value="Informe a quantidade máxima de caracteres por período: " style=" color: #000000; font: 17px arial, sans-serif; "></h:outputLabel>
+                    <p:inputText value="#{principal.tam}"  style="background-color: #f5f5f0" required="true" requiredMessage="Por favor, insira um tamanho máximo para períodos!"> 
+                    </p:inputText>
+                    
+
+                    <h:outputLabel value="Informe a quantidade mínima de caracteres por parágrafo: " style=" color: #000000; font: 17px arial, sans-serif;"></h:outputLabel>
+                    <p:inputText value="#{principal.tamp}"  style="background-color: #f5f5f0" required="true" requiredMessage="Por favor, insira um tamanho mínimo para parágrafos!"> 
+                    </p:inputText>
+                   
+
+                    <h:outputLabel  value="Informe a quantidade máxima de caracteres por período: " style=" color: #000000; font: 17px arial, sans-serif;"></h:outputLabel>
+                    <p:inputText value="#{principal.tampmax}" style="background-color: #f5f5f0" required="true" requiredMessage="Por favor, insira um tamanho máximos para parágrafos!"> 
+                    </p:inputText>
+                    
+                    <hr/>
+                    
+                    <p:growl id="delim" />
+ 
+                    
+                        <h:outputLabel value="Selecione o delimitador de parágrafos: " style="color: #000000; font: 17px arial, sans-serif; "></h:outputLabel> 
+                        <h:selectOneMenu value = "#{principal.op}" style="border: 2px; margin-left:0px; width: 100%; font: 17px arial, sans-serif; background-color: #d6d6c2"> 
+                            <f:selectItem itemValue = "1" itemLabel = "Tabulação" /> 
+                            <f:selectItem itemValue = "2" itemLabel = "Quebra de Linha" /> 
+                            <f:selectItem itemValue = "3" itemLabel = "Tabulação e Quebra de Linha" />   
+                        </h:selectOneMenu>  
+                    
+                    <p:commandButton style="margin-top: 15%; font: 17px arial, sans-serif;margin-left:370px;" value="Analisar" actionListener="#{principal.chamaMetodos()}">
+                        
+                    </p:commandButton>
+                    
+                        
+                        
+                    </p:panelGrid>
+                    
+                    <br /><br /><br /><br /><br /><br />
+                </p:panelGrid>
+            </h:form>
+            
+        </h:body>
+        
+    </f:view>
+</html>
+
